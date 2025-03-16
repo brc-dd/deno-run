@@ -1,0 +1,32 @@
+{
+  "name": "@brc-dd/run",
+  "version": "0.0.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
+  "publish": {
+    "include": [
+      "*.md",
+      "*.ts",
+      "vendor"
+    ]
+  },
+  "compilerOptions": {
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "tasks": {
+    "run": "deno -A ./mod.ts -- -A",
+    "release": "deno task run #/release.ts",
+    "update": "deno task run #/update.ts"
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "proseWrap": "preserve",
+    "semiColons": false,
+    "singleQuote": true
+  },
+  "imports": {
+    "#/": "https://raw.githubusercontent.com/globalbrain/hado/v0.9.1/scripts/"
+  }
+}
