@@ -27,6 +27,6 @@
     "singleQuote": true
   },
   "imports": {
-    "#/": "https://raw.githubusercontent.com/globalbrain/hado/v0.9.1/scripts/"
+    "#/": "https://raw.githubusercontent.com/globalbrain/hado/v0.9.4/scripts/"
   }
 }
