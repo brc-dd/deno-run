@@ -10,10 +10,10 @@
  * @module
  */
 
-import $ from 'jsr:@david/dax@^0.42.0'
-import { gray } from 'jsr:@std/fmt@^1.0.6/colors'
-import { resolve, toFileUrl } from 'jsr:@std/path@^1.0.8'
-import { parseFromJson } from './vendor/mod.ts'
+import { parseFromJson } from 'jsr:@brc-dd/import-map@^0.24.0'
+import $ from 'jsr:@david/dax@^0.43.2'
+import { gray } from 'jsr:@std/fmt@^1.0.8/colors'
+import { resolve, toFileUrl } from 'jsr:@std/path@^1.1.2'
 
 const baseUrl = toFileUrl(resolve('deno.json'))
 const importMap = parseFromJson(

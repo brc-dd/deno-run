@@ -6,27 +6,39 @@
   "publish": {
     "include": [
       "*.md",
-      "*.ts",
-      "vendor"
+      "*.ts"
     ]
-  },
-  "compilerOptions": {
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true
   },
   "tasks": {
     "run": "deno -A ./mod.ts -- -A",
     "release": "deno task run #/release.ts",
     "update": "deno task run #/update.ts"
   },
+  "compilerOptions": {
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
   "fmt": {
-    "lineWidth": 100,
+    "lineWidth": 120,
     "proseWrap": "preserve",
     "semiColons": false,
     "singleQuote": true
   },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended",
+        "jsr"
+      ],
+      "exclude": [
+        "no-import-prefix"
+      ]
+    }
+  },
   "imports": {
-    "#/": "https://raw.githubusercontent.com/globalbrain/hado/v0.9.4/scripts/"
+    "#/": "https://raw.githubusercontent.com/globalbrain/hado/v0.19.1/scripts/"
   }
 }
