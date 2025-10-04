@@ -12,17 +12,15 @@
 
 import { parseFromJson } from 'jsr:@brc-dd/import-map@^0.24.0'
 import $ from 'jsr:@david/dax@^0.43.2'
+import { parseArgs } from 'jsr:@std/cli@^1.0.22/parse-args'
 import { gray } from 'jsr:@std/fmt@^1.0.8/colors'
 import { resolve, toFileUrl } from 'jsr:@std/path@^1.1.2'
 
 const baseUrl = toFileUrl(resolve('deno.json'))
-const importMap = parseFromJson(
-  baseUrl,
-  await Deno.readTextFile('deno.json'),
-  { expandImports: true },
-)
+const importMap = parseFromJson(baseUrl, await Deno.readTextFile(baseUrl), { expandImports: true })
 
-const argv = [...Deno.args]
+const parsed = parseArgs(Deno.args, { '--': true })
+const argv = parsed['--'] || []
 
 // Find first non-flag argument and resolve it
 const scriptArgIndex = argv.findIndex((arg) => !arg.startsWith('-'))
@@ -35,14 +33,7 @@ if (scriptArgIndex !== -1) {
 }
 
 // Process final argument list
-const argsIndex = argv.indexOf('--')
-const finalArgs = [
-  Deno.execPath(),
-  ...(argsIndex !== -1 ? argv.slice(argsIndex + 1) : []),
-]
-  .filter(Boolean)
-  .map($.escapeArg)
-  .join(' ')
+const finalArgs = [Deno.execPath(), ...argv].map($.escapeArg).join(' ')
 
 // Print and execute the command
 await Deno.stderr.write(new TextEncoder().encode(gray(`$ ${finalArgs}\n`)))
