@@ -1,3 +1,5 @@
+## [0.2.1](https://github.com/brc-dd/deno-run/compare/v0.2.0...v0.2.1) (2025-10-04)
+
 ## 0.2.0 (2025-03-16)
 
 ### Features
